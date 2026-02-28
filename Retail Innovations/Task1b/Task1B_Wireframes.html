@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task 1B — Wireframes — Retail Innovations Ltd</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #F4F5F7;
+    color: #2C2C3A;
+    padding: 48px 40px;
+  }
+
+  /* ─── Cover ──────────────────────────────────────── */
+  .cover {
+    background: #1F3864;
+    color: white;
+    padding: 56px 64px;
+    border-radius: 12px;
+    margin-bottom: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .cover h1 { font-size: 32px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 8px; }
+  .cover h2 { font-size: 18px; font-weight: 400; opacity: 0.8; }
+  .cover-meta { text-align: right; font-size: 13px; opacity: 0.6; line-height: 1.8; font-family: 'DM Mono', monospace; }
+
+  /* ─── Section heading ────────────────────────────── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #2E5FAC;
+    margin: 0 0 10px 4px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1F3864;
+    margin-bottom: 8px;
+  }
+  .section-desc {
+    font-size: 13.5px;
+    color: #5A6070;
+    margin-bottom: 28px;
+    line-height: 1.6;
+    max-width: 780px;
+  }
+  .wf-group { margin-bottom: 72px; }
+
+  /* ─── Wireframe shell ────────────────────────────── */
+  .wf-shell {
+    background: white;
+    border-radius: 10px;
+    border: 1.5px solid #D0D5E0;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 32px;
+  }
+  /* Browser chrome */
+  .browser-bar {
+    background: #EAEDF2;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #D0D5E0;
+  }
+  .browser-dots { display: flex; gap: 6px; }
+  .browser-dots span { width: 10px; height: 10px; border-radius: 50%; background: #CBD0DA; display: block; }
+  .browser-url {
+    background: white;
+    border: 1px solid #D0D5E0;
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    color: #778;
+    flex: 1;
+    max-width: 420px;
+  }
+
+  /* ─── WIREFRAME COMPONENTS ────────────────────────── */
+  /* Colours */
+  :root {
+    --wf-bg: #F8F9FB;
+    --wf-panel: #FFFFFF;
+    --wf-border: #D8DCE6;
+    --wf-accent: #1F3864;
+    --wf-accent2: #2E5FAC;
+    --wf-mid: #8892A0;
+    --wf-light: #EEF1F7;
+    --wf-placeholder: #C8CDD8;
+    --wf-text: #2C2C3A;
+    --wf-subtext: #6B7280;
+    --wf-green: #D1FAE5;
+    --wf-orange: #FEF3C7;
+    --wf-blue-light: #DBEAFE;
+  }
+
+  .wf-body { background: var(--wf-bg); padding: 0; }
+
+  /* Top bar */
+  .wf-topbar {
+    background: var(--wf-accent);
+    padding: 0 24px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .wf-brand { display: flex; align-items: center; gap: 10px; }
+  .wf-brand-icon {
+    width: 32px; height: 32px;
+    background: var(--wf-accent2);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 600; color: white; letter-spacing: 0;
+  }
+  .wf-brand-name { font-size: 13px; font-weight: 600; color: white; }
+  .wf-brand-name span { color: #82AAFF; }
+  .wf-topbar-actions { display: flex; align-items: center; gap: 12px; }
+  .wf-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--wf-accent2); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: white; }
+  .wf-user-info { display: flex; flex-direction: column; }
+  .wf-user-name { font-size: 11px; font-weight: 600; color: white; }
+  .wf-user-role { font-size: 10px; color: #82AAFF; }
+  .wf-btn-sm { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; padding: 4px 10px; font-size: 11px; color: white; font-family: 'DM Sans', sans-serif; }
+
+  /* Nav tabs */
+  .wf-nav { background: white; border-bottom: 1.5px solid var(--wf-border); padding: 0 24px; display: flex; gap: 0; }
+  .wf-tab { padding: 12px 18px; font-size: 12.5px; color: var(--wf-subtext); font-weight: 500; border-bottom: 2.5px solid transparent; position: relative; top: 1.5px; }
+  .wf-tab.active { color: var(--wf-accent); border-bottom-color: var(--wf-accent2); font-weight: 600; }
+  .wf-tab.admin-badge::after { content: 'ADMIN'; font-size: 8px; font-family: 'DM Mono', monospace; background: var(--wf-accent2); color: white; padding: 1px 4px; border-radius: 3px; margin-left: 5px; vertical-align: middle; }
+
+  /* Main content area */
+  .wf-main { padding: 28px 28px; }
+
+  /* Section header */
+  .wf-section-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 22px; }
+  .wf-section-title { font-size: 18px; font-weight: 600; color: var(--wf-accent); }
+  .wf-section-subtitle { font-size: 12px; color: var(--wf-subtext); margin-top: 2px; }
+  .wf-btn-primary { background: var(--wf-accent2); color: white; border: none; border-radius: 6px; padding: 8px 16px; font-size: 12px; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+  .wf-btn-secondary { background: white; color: var(--wf-accent); border: 1.5px solid var(--wf-border); border-radius: 6px; padding: 7px 14px; font-size: 12px; font-family: 'DM Sans', sans-serif; }
+
+  /* Stat cards */
+  .wf-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 22px; }
+  .wf-stat-card { background: white; border: 1.5px solid var(--wf-border); border-radius: 8px; padding: 16px 18px; }
+  .wf-stat-label { font-size: 11px; color: var(--wf-subtext); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+  .wf-stat-value { font-size: 26px; font-weight: 600; color: var(--wf-accent); margin: 4px 0 2px; }
+  .wf-stat-sub { font-size: 11px; color: var(--wf-subtext); }
+
+  /* Charts */
+  .wf-charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; }
+  .wf-chart-card { background: white; border: 1.5px solid var(--wf-border); border-radius: 8px; padding: 18px; }
+  .wf-chart-title { font-size: 12.5px; font-weight: 600; color: var(--wf-accent); margin-bottom: 14px; }
+  .wf-bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 80px; }
+  .wf-bar { background: var(--wf-accent2); border-radius: 3px 3px 0 0; flex: 1; opacity: 0.7; }
+  .wf-bar-labels { display: flex; gap: 8px; margin-top: 4px; }
+  .wf-bar-label { flex: 1; font-size: 9px; color: var(--wf-subtext); text-align: center; font-family: 'DM Mono', monospace; }
+  .wf-donut-placeholder { display: flex; align-items: center; justify-content: center; height: 80px; gap: 20px; }
+  .wf-donut { width: 70px; height: 70px; border-radius: 50%; background: conic-gradient(#CD7F32 0deg 90deg, #C0C0C0 90deg 180deg, #FFD700 180deg 260deg, #82AAFF 260deg 360deg); position: relative; display: flex; align-items: center; justify-content: center; }
+  .wf-donut::after { content: ''; width: 42px; height: 42px; border-radius: 50%; background: white; position: absolute; }
+  .wf-donut-legend { font-size: 10px; color: var(--wf-subtext); line-height: 2; }
+  .wf-legend-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+
+  /* Toolbar */
+  .wf-toolbar { display: flex; gap: 10px; margin-bottom: 14px; }
+  .wf-search { background: white; border: 1.5px solid var(--wf-border); border-radius: 6px; padding: 8px 12px; font-size: 12px; color: var(--wf-subtext); display: flex; align-items: center; gap: 6px; flex: 1; font-family: 'DM Sans', sans-serif; }
+  .wf-search-icon { color: var(--wf-placeholder); font-size: 14px; }
+  .wf-select { background: white; border: 1.5px solid var(--wf-border); border-radius: 6px; padding: 8px 12px; font-size: 12px; color: var(--wf-subtext); display: flex; align-items: center; gap: 6px; min-width: 140px; }
+
+  /* Table */
+  .wf-table { width: 100%; border-collapse: collapse; }
+  .wf-table th { background: var(--wf-light); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--wf-subtext); padding: 9px 12px; text-align: left; border-bottom: 1.5px solid var(--wf-border); }
+  .wf-table td { padding: 11px 12px; font-size: 12.5px; border-bottom: 1px solid #F0F2F7; vertical-align: middle; color: var(--wf-text); }
+  .wf-table tr:hover td { background: #FAFBFD; }
+  .wf-table-wrap { background: white; border: 1.5px solid var(--wf-border); border-radius: 8px; overflow: hidden; }
+  .wf-table-footer { padding: 10px 14px; font-size: 11px; color: var(--wf-subtext); background: var(--wf-light); border-top: 1px solid var(--wf-border); font-family: 'DM Mono', monospace; }
+
+  /* Product cell */
+  .wf-prod-cell { display: flex; align-items: center; gap: 10px; }
+  .wf-thumb { width: 36px; height: 36px; border-radius: 6px; background: var(--wf-light); border: 1px solid var(--wf-border); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--wf-mid); font-family: 'DM Mono', monospace; }
+  .wf-prod-name { font-size: 12.5px; font-weight: 500; color: var(--wf-accent); }
+  .wf-prod-sku { font-size: 10px; color: var(--wf-subtext); font-family: 'DM Mono', monospace; }
+
+  /* Badges */
+  .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 10.5px; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+  .badge-active { background: var(--wf-green); color: #065F46; }
+  .badge-inactive { background: var(--wf-orange); color: #92400E; }
+  .badge-pending { background: var(--wf-orange); color: #78350F; }
+  .badge-shipped { background: var(--wf-blue-light); color: #1E40AF; }
+  .badge-delivered { background: var(--wf-green); color: #065F46; }
+  .badge-bronze { background: #F3E8D0; color: #92400E; }
+  .badge-silver { background: #E5E7EB; color: #374151; }
+  .badge-gold { background: #FEF9C3; color: #713F12; }
+  .badge-platinum { background: #DBEAFE; color: #1E40AF; }
+
+  /* Action btns */
+  .wf-actions { display: flex; gap: 6px; }
+  .wf-act-btn { background: white; border: 1px solid var(--wf-border); border-radius: 4px; padding: 4px 8px; font-size: 10.5px; color: var(--wf-subtext); font-family: 'DM Sans', sans-serif; }
+  .wf-act-btn.danger { border-color: #FCA5A5; color: #DC2626; }
+
+  /* ─── AUTH SCREEN ──────────────────────────── */
+  .auth-screen { background: linear-gradient(135deg, #1F3864 0%, #2E5FAC 100%); min-height: 420px; display: flex; align-items: center; justify-content: center; padding: 40px; }
+  .auth-bg-dots { position: absolute; opacity: 0.06; font-size: 200px; color: white; font-weight: 900; }
+  .auth-card { background: white; border-radius: 12px; padding: 36px 40px; width: 380px; box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+  .auth-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .auth-brand-icon { width: 44px; height: 44px; background: var(--wf-accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: white; }
+  .auth-brand-name { font-size: 18px; font-weight: 700; color: var(--wf-accent); }
+  .auth-brand-name span { color: var(--wf-accent2); }
+  .auth-subtitle { font-size: 12.5px; color: var(--wf-subtext); margin-bottom: 22px; margin-top: 2px; }
+  .form-group { margin-bottom: 14px; }
+  .form-label { display: block; font-size: 11.5px; font-weight: 600; color: var(--wf-accent); margin-bottom: 5px; }
+  .form-input { width: 100%; border: 1.5px solid var(--wf-border); border-radius: 6px; padding: 9px 12px; font-size: 12.5px; color: var(--wf-subtext); background: white; font-family: 'DM Sans', sans-serif; }
+  .form-input.filled { color: var(--wf-text); }
+  .auth-full-btn { width: 100%; background: var(--wf-accent2); color: white; border: none; border-radius: 6px; padding: 11px; font-size: 13px; font-weight: 600; font-family: 'DM Sans', sans-serif; margin: 4px 0 16px; }
+  .auth-toggle { text-align: center; font-size: 12px; color: var(--wf-subtext); }
+  .auth-toggle-btn { color: var(--wf-accent2); font-size: 12px; font-weight: 600; background: none; border: none; font-family: 'DM Sans', sans-serif; }
+  .auth-footer { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--wf-border); display: flex; align-items: center; gap: 6px; }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #CBD0DA; }
+  .status-dot.on { background: #10B981; }
+  .status-text { font-size: 11px; color: var(--wf-subtext); font-family: 'DM Mono', monospace; }
+
+  /* ─── MODAL ──────────────────────────── */
+  .modal-overlay { background: rgba(0,0,0,0.35); padding: 40px; display: flex; align-items: center; justify-content: center; }
+  .modal-card { background: white; border-radius: 10px; width: 480px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+  .modal-header { background: var(--wf-accent); padding: 16px 22px; }
+  .modal-title { font-size: 14px; font-weight: 600; color: white; }
+  .modal-body { padding: 22px; }
+  .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .modal-footer { padding: 16px 22px; background: var(--wf-light); border-top: 1px solid var(--wf-border); display: flex; justify-content: flex-end; gap: 10px; }
+
+  /* ─── TIER CARDS ──────────────────────── */
+  .tier-visual { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+  .tier-card { background: white; border: 1.5px solid var(--wf-border); border-radius: 8px; padding: 14px; text-align: center; }
+  .tier-icon { font-size: 22px; margin-bottom: 4px; }
+  .tier-name { font-size: 12px; font-weight: 600; color: var(--wf-accent); }
+  .tier-range { font-size: 10px; color: var(--wf-subtext); font-family: 'DM Mono', monospace; margin-top: 2px; }
+
+  /* ─── ANNOTATION SYSTEM ──────────────── */
+  .annotated { position: relative; }
+  .annotations { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .annotation { display: flex; align-items: flex-start; gap: 10px; background: white; border: 1.5px solid var(--wf-border); border-radius: 8px; padding: 12px 14px; }
+  .ann-num { min-width: 22px; height: 22px; border-radius: 50%; background: var(--wf-accent); color: white; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; }
+  .ann-text { font-size: 12px; color: var(--wf-subtext); line-height: 1.5; }
+  .ann-text strong { color: var(--wf-accent); font-weight: 600; }
+
+  /* ─── LOYALTY ──────────────────────────── */
+  .loyalty-progress { background: white; border: 1.5px solid var(--wf-border); border-radius: 8px; padding: 18px; margin-bottom: 14px; }
+  .lp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .lp-title { font-size: 13px; font-weight: 600; color: var(--wf-accent); }
+  .lp-pts { font-size: 11px; color: var(--wf-subtext); font-family: 'DM Mono', monospace; }
+  .progress-bar { height: 10px; background: var(--wf-light); border-radius: 5px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--wf-accent2), #5B8DEF); border-radius: 5px; }
+
+  /* divider */
+  .wf-divider { height: 1.5px; background: var(--wf-border); margin: 32px 0; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div>
+    <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:0.6;margin-bottom:12px;font-family:'DM Mono',monospace;">Task 1 — Activity B</div>
+    <h1>Wireframe Designs</h1>
+    <h2>Retail Innovations Ltd — Digital Platform</h2>
+  </div>
+  <div class="cover-meta">
+    T Level Digital Software Development<br>
+    Screens: 7 core views documented<br>
+    Annotations: key design decisions
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 1. LOGIN SCREEN -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="wf-group">
+  <div class="section-label">Screen 01</div>
+  <div class="section-title">Authentication Screen — Login</div>
+  <div class="section-desc">The first screen users encounter. Centre-aligned card on a branded background. Toggle between Login and Register modes without navigating away. Enter key bound to form submission.</div>
+
+  <div class="wf-shell">
+    <div class="browser-bar">
+      <div class="browser-dots"><span></span><span></span><span></span></div>
+      <div class="browser-url">localhost:3000 / retail-innovations.co.uk</div>
+    </div>
+    <div class="auth-screen">
+      <div class="auth-card">
+        <div class="auth-brand">
+          <div class="auth-brand-icon">RI</div>
+          <div class="auth-brand-name">Retail <span>Innovations</span></div>
+        </div>
+        <div class="auth-subtitle">Sign in to your account</div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <div class="form-input" style="color:#AAB;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5a23352f1a3f223b372a363f74393537">[email&#160;protected]</a></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="form-input" style="color:#AAB;">••••••••</div>
+        </div>
+        <button class="auth-full-btn">Sign In</button>
+        <div class="auth-toggle">
+          Don't have an account? <button class="auth-toggle-btn">Create one</button>
+        </div>
+        <div class="auth-footer">
+          <div class="status-dot"></div>
+          <div class="status-text">Signed out</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotations">
+    <div class="annotation"><div class="ann-num">1</div><div class="ann-text"><strong>Centre-aligned card:</strong> Follows established web convention for login pages (Google, Shopify). Users recognise the pattern immediately, reducing learning time.</div></div>
+    <div class="annotation"><div class="ann-num">2</div><div class="ann-text"><strong>Branded background:</strong> Deep blue gradient reinforces company identity before the user enters the main interface. Decorative — no semantic content, so no alt text needed.</div></div>
+    <div class="annotation"><div class="ann-num">3</div><div class="ann-text"><strong>Mode toggle ('Create one'):</strong> Revealing register fields inline prevents a full page navigation, keeping the user in context and reducing perceived complexity.</div></div>
+    <div class="annotation"><div class="ann-num">4</div><div class="ann-text"><strong>Status indicator (bottom):</strong> Shows connection state (grey = offline, green = Supabase connected). Provides transparency for technical users checking live status.</div></div>
+  </div>
+</div>
+
+<div class="wf-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 2. REGISTER SCREEN -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="wf-group">
+  <div class="section-label">Screen 02</div>
+  <div class="section-title">Authentication Screen — Register Mode</div>
+  <div class="section-desc">Toggling 'Create one' expands the same card to reveal Full Name and Confirm Password fields. The button label and subtitle update to reflect the new mode. No page reload occurs.</div>
+
+  <div class="wf-shell">
+    <div class="browser-bar">
+      <div class="browser-dots"><span></span><span></span><span></span></div>
+      <div class="browser-url">localhost:3000 / retail-innovations.co.uk</div>
+    </div>
+    <div class="auth-screen">
+      <div class="auth-card">
+        <div class="auth-brand">
+          <div class="auth-brand-icon">RI</div>
+          <div class="auth-brand-name">Retail <span>Innovations</span></div>
+        </div>
+        <div class="auth-subtitle">Create a new account</div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <div class="form-input" style="color:#AAB;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e59c8a90a5809d8488958980cb868a88">[email&#160;protected]</a></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="form-input" style="color:#AAB;">••••••••</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Full Name <span style="font-size:10px;color:#AAB;">(revealed on toggle)</span></label>
+          <div class="form-input filled">Jane Doe</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Confirm Password <span style="font-size:10px;color:#AAB;">(revealed on toggle)</span></label>
+          <div class="form-input" style="color:#AAB;">••••••••</div>
+        </div>
+        <button class="auth-full-btn">Create Account</button>
+        <div class="auth-toggle">
+          Already have an account? <button class="auth-toggle-btn">Sign in</button>
+        </div>
+        <div class="auth-footer">
+          <div class="status-dot on"></div>
+          <div class="status-text">Signed in as <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="87e6e3eaeee9c7e2ffe6eaf7ebe2a9e4e8ea">[email&#160;protected]</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotations">
+    <div class="annotation"><div class="ann-num">1</div><div class="ann-text"><strong>Extra fields revealed inline:</strong> Using display:block/none in JavaScript avoids a separate registration page, reducing navigation steps from 3 to 1.</div></div>
+    <div class="annotation"><div class="ann-num">2</div><div class="ann-text"><strong>Button label changes:</strong> 'Sign In' → 'Create Account' makes the action consequence unambiguous. Users always know what clicking will do.</div></div>
+    <div class="annotation"><div class="ann-num">3</div><div class="ann-text"><strong>Connected status (green dot):</strong> When Supabase is live, status updates to green with signed-in email. Confirms connection before the user proceeds.</div></div>
+    <div class="annotation"><div class="ann-num">4</div><div class="ann-text"><strong>Confirm Password field:</strong> Catches typing mistakes before account creation. Validation checks both fields match before calling localRegister().</div></div>
+  </div>
+</div>
+
+<div class="wf-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 3. DASHBOARD -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="wf-group">
+  <div class="section-label">Screen 03</div>
+  <div class="section-title">Dashboard — Admin View</div>
+  <div class="section-desc">The first panel shown after login. Admin sees four stat cards, a sales-by-category bar chart, and a customer tier donut chart. Customer-role users see the same layout but with Customers and Revenue cards hidden, showing personal data instead.</div>
+
+  <div class="wf-shell">
+    <div class="browser-bar">
+      <div class="browser-dots"><span></span><span></span><span></span></div>
+      <div class="browser-url">localhost:3000</div>
+    </div>
+    <div class="wf-body">
+      <div class="wf-topbar">
+        <div class="wf-brand">
+          <div class="wf-brand-icon">RI</div>
+          <div class="wf-brand-name">Retail <span>Innovations</span></div>
+        </div>
+        <div class="wf-topbar-actions">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="wf-avatar">A</div>
+            <div class="wf-user-info">
+              <div class="wf-user-name">Administrator</div>
+              <div class="wf-user-role">Admin</div>
+            </div>
+          </div>
+          <button class="wf-btn-sm">Sign Out</button>
+        </div>
+      </div>
+      <div class="wf-nav">
+        <div class="wf-tab active">Dashboard</div>
+        <div class="wf-tab">Products</div>
+        <div class="wf-tab admin-badge">Customers</div>
+        <div class="wf-tab">Orders</div>
+        <div class="wf-tab">Loyalty</div>
+      </div>
+      <div class="wf-main">
+        <div class="wf-section-header">
+          <div>
+            <div class="wf-section-title">Dashboard</div>
+            <div class="wf-section-subtitle">Retail analytics at a glance</div>
+          </div>
+          <button class="wf-btn-secondary">↻ Refresh</button>
+        </div>
+        <div class="wf-stats">
+          <div class="wf-stat-card">
+            <div class="wf-stat-label">Total Products</div>
+            <div class="wf-stat-value">10</div>
+            <div class="wf-stat-sub">Active inventory</div>
+          </div>
+          <div class="wf-stat-card" style="border-top: 3px solid #2E5FAC;">
+            <div class="wf-stat-label" style="color:#2E5FAC;">Total Customers ★</div>
+            <div class="wf-stat-value">24</div>
+            <div class="wf-stat-sub">Registered users</div>
+          </div>
+          <div class="wf-stat-card">
+            <div class="wf-stat-label">Orders</div>
+            <div class="wf-stat-value">6</div>
+            <div class="wf-stat-sub">All orders</div>
+          </div>
+          <div class="wf-stat-card" style="border-top: 3px solid #2E5FAC;">
+            <div class="wf-stat-label" style="color:#2E5FAC;">Revenue ★</div>
+            <div class="wf-stat-value">£1,247</div>
+            <div class="wf-stat-sub">Total revenue</div>
+          </div>
+        </div>
+        <div class="wf-charts">
+          <div class="wf-chart-card">
+            <div class="wf-chart-title">Sales by Category ★</div>
+            <div class="wf-bar-chart">
+              <div class="wf-bar" style="height:60%"></div>
+              <div class="wf-bar" style="height:100%"></div>
+              <div class="wf-bar" style="height:80%"></div>
+              <div class="wf-bar" style="height:40%"></div>
+              <div class="wf-bar" style="height:70%"></div>
+              <div class="wf-bar" style="height:30%"></div>
+              <div class="wf-bar" style="height:50%"></div>
+            </div>
+            <div class="wf-bar-labels">
+              <div class="wf-bar-label">BEV</div><div class="wf-bar-label">SPO</div><div class="wf-bar-label">ELE</div><div class="wf-bar-label">FOD</div><div class="wf-bar-label">HOM</div><div class="wf-bar-label">OFF</div><div class="wf-bar-label">ACC</div>
+            </div>
+          </div>
+          <div class="wf-chart-card">
+            <div class="wf-chart-title">Customer Tiers ★</div>
+            <div class="wf-donut-placeholder">
+              <div class="wf-donut"></div>
+              <div class="wf-donut-legend">
+                <div><span class="wf-legend-dot" style="background:#CD7F32;"></span>Bronze: 14</div>
+                <div><span class="wf-legend-dot" style="background:#C0C0C0;"></span>Silver: 6</div>
+                <div><span class="wf-legend-dot" style="background:#FFD700;"></span>Gold: 3</div>
+                <div><span class="wf-legend-dot" style="background:#82AAFF;"></span>Platinum: 1</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:#888;font-style:italic;margin-top:4px;">★ = Admin-only elements (hidden from customer-role users via CSS .admin-only class)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotations">
+    <div class="annotation"><div class="ann-num">1</div><div class="ann-text"><strong>Role-conditional stat cards:</strong> Admin sees total customers and revenue. Customer sees their own order count and spend. Same HTML — different content injected based on isAdmin flag.</div></div>
+    <div class="annotation"><div class="ann-num">2</div><div class="ann-text"><strong>Bar chart (pure CSS/JS):</strong> Bar heights calculated as (count/max)×100%. No external chart library required — reduces page weight and load time.</div></div>
+    <div class="annotation"><div class="ann-num">3</div><div class="ann-text"><strong>Donut chart (conic-gradient):</strong> CSS conic-gradient with degree values calculated from customer tier counts. Centre shows total customer number.</div></div>
+    <div class="annotation"><div class="ann-num">4</div><div class="ann-text"><strong>Admin-only chart section:</strong> The entire charts grid has class 'admin-only'. Customer users never see commercially sensitive distribution data.</div></div>
+  </div>
+</div>
+
+<div class="wf-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 4. PRODUCTS -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="wf-group">
+  <div class="section-label">Screen 04</div>
+  <div class="section-title">Products Panel</div>
+  <div class="section-desc">Searchable, filterable product catalogue. Customers can browse but not edit. Admins see Edit and Delete action buttons, plus the Add Product button in the header. Real-time filtering with no page reload.</div>
+
+  <div class="wf-shell">
+    <div class="browser-bar">
+      <div class="browser-dots"><span></span><span></span><span></span></div>
+      <div class="browser-url">localhost:3000 — Products</div>
+    </div>
+    <div class="wf-body">
+      <div class="wf-topbar">
+        <div class="wf-brand"><div class="wf-brand-icon">RI</div><div class="wf-brand-name">Retail <span>Innovations</span></div></div>
+        <div class="wf-topbar-actions"><div style="display:flex;align-items:center;gap:8px;"><div class="wf-avatar">A</div><div class="wf-user-info"><div class="wf-user-name">Administrator</div><div class="wf-user-role">Admin</div></div></div><button class="wf-btn-sm">Sign Out</button></div>
+      </div>
+      <div class="wf-nav">
+        <div class="wf-tab">Dashboard</div>
+        <div class="wf-tab active">Products</div>
+        <div class="wf-tab admin-badge">Customers</div>
+        <div class="wf-tab">Orders</div>
+        <div class="wf-tab">Loyalty</div>
+      </div>
+      <div class="wf-main">
+        <div class="wf-section-header">
+          <div>
+            <div class="wf-section-title">Products</div>
+            <div class="wf-section-subtitle">Browse our product catalogue</div>
+          </div>
+          <button class="wf-btn-primary">+ Add Product ★</button>
+        </div>
+        <div class="wf-toolbar">
+          <div class="wf-search"><span class="wf-search-icon">⌕</span> Search products...</div>
+          <div class="wf-select">All Categories ▾</div>
+        </div>
+        <div class="wf-table-wrap">
+          <table class="wf-table">
+            <thead><tr>
+              <th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th><th>Actions ★</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="wf-prod-cell"><div class="wf-thumb">IMG</div><div><div class="wf-prod-name">Organic Green Tea</div><div class="wf-prod-sku">BEV-001</div></div></div></td>
+                <td>Beverages</td><td style="font-family:'DM Mono',monospace;font-size:12px;">£12.99</td>
+                <td><span style="font-family:'DM Mono',monospace;font-size:12px;">150</span></td>
+                <td><span class="badge badge-active">Active</span></td>
+                <td><div class="wf-actions"><button class="wf-act-btn">Edit</button><button class="wf-act-btn danger">Delete</button></div></td>
+              </tr>
+              <tr>
+                <td><div class="wf-prod-cell"><div class="wf-thumb">IMG</div><div><div class="wf-prod-name">Wireless Earbuds</div><div class="wf-prod-sku">ELE-001</div></div></div></td>
+                <td>Electronics</td><td style="font-family:'DM Mono',monospace;font-size:12px;">£79.99</td>
+                <td><span style="font-family:'DM Mono',monospace;font-size:12px;">200</span></td>
+                <td><span class="badge badge-active">Active</span></td>
+                <td><div class="wf-actions"><button class="wf-act-btn">Edit</button><button class="wf-act-btn danger">Delete</button></div></td>
+              </tr>
+              <tr>
+                <td><div class="wf-prod-cell"><div class="wf-thumb">IMG</div><div><div class="wf-prod-name">Running Shoes</div><div class="wf-prod-sku">SPO-001</div></div></div></td>
+                <td>Sports</td><td style="font-family:'DM Mono',monospace;font-size:12px;">£124.95</td>
+                <td><span style="font-family:'DM Mono',monospace;font-size:12px;color:#D97706;">8 ⚠</span></td>
+                <td><span class="badge badge-active">Active</span></td>
+                <td><div class="wf-actions"><button class="wf-act-btn">Edit</button><button class="wf-act-btn danger">Delete</button></div></td>
+              </tr>
+              <tr>
+                <td><div class="wf-prod-cell"><div class="wf-thumb">IMG</div><div><div class="wf-prod-name">Bamboo Organiser</div><div class="wf-prod-sku">OFF-001</div></div></div></td>
+                <td>Office</td><td style="font-family:'DM Mono',monospace;font-size:12px;">£29.99</td>
+                <td><span style="font-family:'DM Mono',monospace;font-size:12px;">120</span></td>
+                <td><span class="badge badge-inactive">Inactive</span></td>
+                <td><div class="wf-actions"><button class="wf-act-btn">Edit</button><button class="wf-act-btn danger">Delete</button></div></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="wf-table-footer">4 of 10 products shown &nbsp;|&nbsp; ★ Actions column hidden for customer-role users</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotations">
+    <div class="annotation"><div class="ann-num">1</div><div class="ann-text"><strong>Real-time search (filterProducts()):</strong> Filters on every keystroke using oninput event. Searches both product name and description. No server call — operates on productsCache array in memory.</div></div>
+    <div class="annotation"><div class="ann-num">2</div><div class="ann-text"><strong>Low stock indicator (⚠):</strong> When stock_quantity &lt; 10, value displayed in orange with warning icon. Draws admin attention without a separate dashboard widget.</div></div>
+    <div class="annotation"><div class="ann-num">3</div><div class="ann-text"><strong>Admin-only Actions column:</strong> Rendered via JavaScript — if (!isAdmin) the column is not generated. The column header exists in HTML but is marked admin-only via CSS class.</div></div>
+    <div class="annotation"><div class="ann-num">4</div><div class="ann-text"><strong>Product thumbnail:</strong> 36×36px image from image_url. If URL is invalid, onerror handler shows a placeholder div with the product name's first letter instead.</div></div>
+  </div>
+</div>
+
+<div class="wf-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 5. CUSTOMERS -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="wf-group">
+  <div class="section-label">Screen 05</div>
+  <div class="section-title">Customers Panel — Admin Only</div>
+  <div class="section-desc">Admin-exclusive panel. Loyalty tier cards at the top provide immediate visual context for the tier system. Searchable table shows all customers with loyalty points, tier badge, and total spend.</div>
+
+  <div class="wf-shell">
+    <div class="browser-bar">
+      <div class="browser-dots"><span></span><span></span><span></span></div>
+      <div class="browser-url">localhost:3000 — Customers (Admin)</div>
+    </div>
+    <div class="wf-body">
+      <div class="wf-topbar">
+        <div class="wf-brand"><div class="wf-brand-icon">RI</div><div class="wf-brand-name">Retail <span>Innovations</span></div></div>
+        <div class="wf-topbar-actions"><div style="display:flex;align-items:center;gap:8px;"><div class="wf-avatar">A</div><div class="wf-user-info"><div class="wf-user-name">Administrator</div><div class="wf-user-role">Admin</div></div></div><button class="wf-btn-sm">Sign Out</button></div>
+      </div>
+      <div class="wf-nav">
+        <div class="wf-tab">Dashboard</div><div class="wf-tab">Products</div>
+        <div class="wf-tab active admin-badge">Customers</div>
+        <div class="wf-tab">Orders</div><div class="wf-tab">Loyalty</div>
+      </div>
+      <div class="wf-main">
+        <div class="wf-section-header">
+          <div><div class="wf-section-title">Customers</div><div class="wf-section-subtitle">Customer management &amp; loyalty tracking</div></div>
+          <button class="wf-btn-primary">+ Add Customer</button>
+        </div>
+        <div class="tier-visual">
+          <div class="tier-card"><div class="tier-icon">🥉</div><div class="tier-name">Bronze</div><div class="tier-range">0–499 pts</div></div>
+          <div class="tier-card"><div class="tier-icon">🥈</div><div class="tier-name">Silver</div><div class="tier-range">500–999 pts</div></div>
+          <div class="tier-card"><div class="tier-icon">🥇</div><div class="tier-name">Gold</div><div class="tier-range">1000–1999 pts</div></div>
+          <div class="tier-card"><div class="tier-icon">💎</div><div class="tier-name">Platinum</div><div class="tier-range">2000+ pts</div></div>
+        </div>
+        <div class="wf-toolbar">
+          <div class="wf-search"><span class="wf-search-icon">⌕</span> Search customers...</div>
+          <div class="wf-select">All Tiers ▾</div>
+        </div>
+        <div class="wf-table-wrap">
+          <table class="wf-table">
+            <thead><tr><th>Customer</th><th>Email</th><th>Phone</th><th>Points</th><th>Tier</th><th>Total Spent</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:500;">Jane Doe</td>
+                <td style="font-size:12px;color:#666;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2248434c4762475a434f524e470c414d4f">[email&#160;protected]</a></td>
+                <td style="font-family:'DM Mono',monospace;font-size:11px;">07700900123</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">1,200</td>
+                <td><span class="badge badge-gold">Gold</span></td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">£450.00</td>
+                <td><div class="wf-actions"><button class="wf-act-btn">Edit</button><button class="wf-act-btn danger">Delete</button></div></td>
+              </tr>
+              <tr>
+                <td style="font-weight:500;">Mike Smith</td>
+                <td style="font-size:12px;color:#666;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3c515557597c59445d514c5059125f5351">[email&#160;protected]</a></td>
+                <td style="font-family:'DM Mono',monospace;font-size:11px;">07700900456</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">550</td>
+                <td><span class="badge badge-silver">Silver</span></td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">£192.50</td>
+                <td><div class="wf-actions"><button class="wf-act-btn">Edit</button><button class="wf-act-btn danger">Delete</button></div></td>
+              </tr>
+              <tr>
+                <td style="font-weight:500;">Sarah Jones</td>
+                <td style="font-size:12px;color:#666;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c7b4a6b5a6af87a2bfa6aab7aba2e9a4a8aa">[email&#160;protected]</a></td>
+                <td style="font-family:'DM Mono',monospace;font-size:11px;">—</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">2,400</td>
+                <td><span class="badge badge-platinum">Platinum</span></td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">£890.00</td>
+                <td><div class="wf-actions"><button class="wf-act-btn">Edit</button><button class="wf-act-btn danger">Delete</button></div></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="wf-table-footer">3 of 24 customers shown</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotations">
+    <div class="annotation"><div class="ann-num">1</div><div class="ann-text"><strong>Tier visual cards:</strong> Placed above the table to provide immediate context before reading customer data. Users understand the system before they see individual tier badges.</div></div>
+    <div class="annotation"><div class="ann-num">2</div><div class="ann-text"><strong>Tier filter dropdown:</strong> Allows admin to filter all customers to a specific tier. Useful for targeted promotions or identifying customers close to the next tier boundary.</div></div>
+    <div class="annotation"><div class="ann-num">3</div><div class="ann-text"><strong>Colour-coded tier badges:</strong> Bronze/Silver/Gold/Platinum each have distinct CSS classes with appropriate colours. Provides at-a-glance tier identification without sorting or scanning.</div></div>
+    <div class="annotation"><div class="ann-num">4</div><div class="ann-text"><strong>Entire panel admin-only:</strong> The Customers nav tab has class 'admin-only'. Customer-role users never see this tab or section. Enforced both in CSS and via Supabase RLS.</div></div>
+  </div>
+</div>
+
+<div class="wf-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 6. ORDERS -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="wf-group">
+  <div class="section-label">Screen 06</div>
+  <div class="section-title">Orders Panel</div>
+  <div class="section-desc">Admins see all orders across all customers. Customers see only their own orders (filtered by user_id). Status badges communicate order lifecycle. Admin can create, edit, and delete orders.</div>
+
+  <div class="wf-shell">
+    <div class="browser-bar">
+      <div class="browser-dots"><span></span><span></span><span></span></div>
+      <div class="browser-url">localhost:3000 — Orders</div>
+    </div>
+    <div class="wf-body">
+      <div class="wf-topbar">
+        <div class="wf-brand"><div class="wf-brand-icon">RI</div><div class="wf-brand-name">Retail <span>Innovations</span></div></div>
+        <div class="wf-topbar-actions"><div style="display:flex;align-items:center;gap:8px;"><div class="wf-avatar">A</div><div class="wf-user-info"><div class="wf-user-name">Administrator</div><div class="wf-user-role">Admin</div></div></div><button class="wf-btn-sm">Sign Out</button></div>
+      </div>
+      <div class="wf-nav">
+        <div class="wf-tab">Dashboard</div><div class="wf-tab">Products</div><div class="wf-tab admin-badge">Customers</div>
+        <div class="wf-tab active">Orders</div><div class="wf-tab">Loyalty</div>
+      </div>
+      <div class="wf-main">
+        <div class="wf-section-header">
+          <div><div class="wf-section-title">Orders</div><div class="wf-section-subtitle">All customer orders (admin view) ★ — customers see "Your orders"</div></div>
+          <button class="wf-btn-primary">+ New Order ★</button>
+        </div>
+        <div class="wf-table-wrap">
+          <table class="wf-table">
+            <thead><tr><th>Order ID</th><th>Customer</th><th>Total</th><th>Status</th><th>Payment</th><th>Date</th><th>Actions ★</th></tr></thead>
+            <tbody>
+              <tr>
+                <td style="font-family:'DM Mono',monospace;font-size:11px;color:#666;">ord_abc123</td>
+                <td style="font-size:12.5px;font-weight:500;">Jane Doe</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">£124.95</td>
+                <td><span class="badge badge-shipped">Shipped</span></td>
+                <td style="font-size:12px;">Card</td>
+                <td style="font-size:12px;color:#666;">14 Jan 2025</td>
+                <td><div class="wf-actions"><button class="wf-act-btn">Edit</button><button class="wf-act-btn danger">Delete</button></div></td>
+              </tr>
+              <tr>
+                <td style="font-family:'DM Mono',monospace;font-size:11px;color:#666;">ord_def456</td>
+                <td style="font-size:12.5px;font-weight:500;">Mike Smith</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">£79.99</td>
+                <td><span class="badge badge-pending">Pending</span></td>
+                <td style="font-size:12px;">PayPal</td>
+                <td style="font-size:12px;color:#666;">15 Jan 2025</td>
+                <td><div class="wf-actions"><button class="wf-act-btn">Edit</button><button class="wf-act-btn danger">Delete</button></div></td>
+              </tr>
+              <tr>
+                <td style="font-family:'DM Mono',monospace;font-size:11px;color:#666;">ord_ghi789</td>
+                <td style="font-size:12.5px;font-weight:500;">Sarah Jones</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">£218.00</td>
+                <td><span class="badge badge-delivered">Delivered</span></td>
+                <td style="font-size:12px;">Card</td>
+                <td style="font-size:12px;color:#666;">12 Jan 2025</td>
+                <td><div class="wf-actions"><button class="wf-act-btn">Edit</button><button class="wf-act-btn danger">Delete</button></div></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="wf-table-footer">3 of 6 orders shown &nbsp;|&nbsp; ★ Admin-only elements</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotations">
+    <div class="annotation"><div class="ann-num">1</div><div class="ann-text"><strong>Role-conditional subtitle:</strong> Admin sees 'All customer orders (admin view)'. Customer sees 'Your orders'. Set dynamically in enterApp() based on isAdmin flag.</div></div>
+    <div class="annotation"><div class="ann-num">2</div><div class="ann-text"><strong>Status badge lifecycle:</strong> pending → processing → shipped → delivered → cancelled. Each status has a distinct CSS class and colour. All include text labels (not colour only).</div></div>
+    <div class="annotation"><div class="ann-num">3</div><div class="ann-text"><strong>Customer data isolation:</strong> loadOrders() fetches only own orders for customer-role users. Admin RLS policy allows SELECT on all rows. Enforced server-side in Supabase.</div></div>
+    <div class="annotation"><div class="ann-num">4</div><div class="ann-text"><strong>Order IDs in monospace:</strong> UUID/generated IDs use DM Mono font to distinguish them from regular text and make them easily scannable for reference.</div></div>
+  </div>
+</div>
+
+<div class="wf-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 7. ADD/EDIT PRODUCT MODAL -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="wf-group">
+  <div class="section-label">Screen 07</div>
+  <div class="section-title">Add / Edit Product Modal</div>
+  <div class="section-desc">Reusable modal overlay for creating or editing products. Edit mode pre-populates all fields. Clicking the overlay background or Cancel closes without saving. The Save button label reflects the operation ('Add Product' vs 'Save Changes').</div>
+
+  <div class="wf-shell">
+    <div class="browser-bar">
+      <div class="browser-dots"><span></span><span></span><span></span></div>
+      <div class="browser-url">localhost:3000 — Products [Modal open]</div>
+    </div>
+    <div class="wf-body">
+      <div class="wf-topbar">
+        <div class="wf-brand"><div class="wf-brand-icon">RI</div><div class="wf-brand-name">Retail <span>Innovations</span></div></div>
+        <div class="wf-topbar-actions"><button class="wf-btn-sm">Sign Out</button></div>
+      </div>
+      <!-- Modal overlay on top of blurred content -->
+      <div class="modal-overlay">
+        <div class="modal-card">
+          <div class="modal-header">
+            <div class="modal-title">✏ Edit Product — Organic Green Tea</div>
+          </div>
+          <div class="modal-body">
+            <div class="modal-grid">
+              <div class="form-group" style="grid-column:1/-1;">
+                <label class="form-label">Product Name *</label>
+                <div class="form-input filled">Organic Green Tea</div>
+              </div>
+              <div class="form-group" style="grid-column:1/-1;">
+                <label class="form-label">Description</label>
+                <div class="form-input filled" style="height:52px;line-height:1.5;">Premium loose-leaf green tea sourced from organic farms.</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Price (£) *</label>
+                <div class="form-input filled">12.99</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Stock Quantity *</label>
+                <div class="form-input filled">150</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Category *</label>
+                <div class="form-input filled">Beverages ▾</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">SKU *</label>
+                <div class="form-input filled" style="font-family:'DM Mono',monospace;font-size:12px;">BEV-001</div>
+              </div>
+              <div class="form-group" style="grid-column:1/-1;">
+                <label class="form-label">Image URL</label>
+                <div class="form-input filled" style="font-size:11px;font-family:'DM Mono',monospace;">https://images.unsplash.com/photo-1556881...w=400</div>
+              </div>
+              <div class="form-group" style="display:flex;align-items:center;gap:8px;">
+                <div style="width:16px;height:16px;border:1.5px solid #2E5FAC;border-radius:3px;background:#2E5FAC;display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:10px;">✓</span></div>
+                <label class="form-label" style="margin:0;">Active</label>
+              </div>
+              <div style="font-size:11px;color:#888;font-style:italic;display:flex;align-items:center;">* Required field — validated on save</div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="wf-btn-secondary">Cancel</button>
+            <button class="wf-btn-primary">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotations">
+    <div class="annotation"><div class="ann-num">1</div><div class="ann-text"><strong>Modal overlay pattern:</strong> Semi-transparent dark overlay behind the card keeps the user in context (they can see the table behind) without navigating away. Dismissed on overlay click.</div></div>
+    <div class="annotation"><div class="ann-num">2</div><div class="ann-text"><strong>Edit pre-population:</strong> editProduct(id) finds the record in productsCache and passes values to all form fields. Users only change what needs updating — unchanged fields are preserved.</div></div>
+    <div class="annotation"><div class="ann-num">3</div><div class="ann-text"><strong>Required field validation:</strong> On save, saveProduct() checks name, price ≥ 0, stock ≥ 0, SKU not empty. Any failure shows a toast and keeps modal open — the user is never silently rejected.</div></div>
+    <div class="annotation"><div class="ann-num">4</div><div class="ann-text"><strong>Action-specific button label:</strong> 'Add Product' in create mode, 'Save Changes' in edit mode. Makes the consequence of clicking unambiguous — users always know what will happen.</div></div>
+  </div>
+</div>
+
+<div class="wf-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 8. LOYALTY -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="wf-group">
+  <div class="section-label">Screen 08</div>
+  <div class="section-title">Loyalty Rewards Panel</div>
+  <div class="section-desc">Visible to all users. Customers see the available rewards read-only. Admins can add, edit, and delete rewards. A loyalty progress indicator shows the customer how close they are to the next tier.</div>
+
+  <div class="wf-shell">
+    <div class="browser-bar">
+      <div class="browser-dots"><span></span><span></span><span></span></div>
+      <div class="browser-url">localhost:3000 — Loyalty</div>
+    </div>
+    <div class="wf-body">
+      <div class="wf-topbar">
+        <div class="wf-brand"><div class="wf-brand-icon">RI</div><div class="wf-brand-name">Retail <span>Innovations</span></div></div>
+        <div class="wf-topbar-actions"><div style="display:flex;align-items:center;gap:8px;"><div class="wf-avatar" style="background:#2E5FAC;">J</div><div class="wf-user-info"><div class="wf-user-name">Jane Doe</div><div class="wf-user-role" style="color:#CBD5E1;">Customer</div></div></div><button class="wf-btn-sm">Sign Out</button></div>
+      </div>
+      <div class="wf-nav">
+        <div class="wf-tab">Dashboard</div><div class="wf-tab">Products</div>
+        <div class="wf-tab">Orders</div>
+        <div class="wf-tab active">Loyalty</div>
+      </div>
+      <div class="wf-main">
+        <div class="wf-section-header">
+          <div><div class="wf-section-title">Loyalty Programme</div><div class="wf-section-subtitle">Your rewards and tier progress</div></div>
+          <button class="wf-btn-primary" style="display:none;">+ Add Reward ★</button>
+        </div>
+
+        <!-- Progress card -->
+        <div class="loyalty-progress">
+          <div class="lp-header">
+            <div class="lp-title">🥇 Gold Tier — Your Progress</div>
+            <div class="lp-pts">1,200 / 2,000 pts to Platinum</div>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:60%;"></div></div>
+          <div style="font-size:11px;color:#888;margin-top:6px;">800 more points to reach 💎 Platinum</div>
+        </div>
+
+        <div class="wf-table-wrap">
+          <table class="wf-table">
+            <thead><tr><th>Reward</th><th>Type</th><th>Value</th><th>Points Required</th><th>Status</th><th style="display:none;">Actions ★</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><div style="font-weight:500;">Free Shipping</div><div style="font-size:11px;color:#888;">Free standard shipping on next order</div></td>
+                <td>Free Shipping</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">—</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">200 pts</td>
+                <td><span class="badge badge-active">Active</span></td>
+              </tr>
+              <tr>
+                <td><div style="font-weight:500;">£5 Off</div><div style="font-size:11px;color:#888;">Flat £5 discount on orders over £25</div></td>
+                <td>Discount (£)</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">£5.00</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">300 pts</td>
+                <td><span class="badge badge-active">Active</span></td>
+              </tr>
+              <tr>
+                <td><div style="font-weight:500;">10% Off Next Order</div><div style="font-size:11px;color:#888;">Get 10% discount on your next purchase</div></td>
+                <td>Discount (%)</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">10%</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">500 pts</td>
+                <td><span class="badge badge-active">Active</span></td>
+              </tr>
+              <tr>
+                <td><div style="font-weight:500;">25% VIP Discount</div><div style="font-size:11px;color:#888;">Exclusive 25% off for Platinum members</div></td>
+                <td>Discount (%)</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">25%</td>
+                <td style="font-family:'DM Mono',monospace;font-size:12px;">2,000 pts</td>
+                <td><span class="badge badge-active">Active</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="wf-table-footer">4 rewards &nbsp;|&nbsp; ★ Edit/Delete buttons shown for admin-role users only</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotations">
+    <div class="annotation"><div class="ann-num">1</div><div class="ann-text"><strong>Loyalty progress card:</strong> Shows current tier, points, and progress bar towards next tier. Identified in feedback (Task 3) as a missing feature — designed here as the recommended improvement I-07.</div></div>
+    <div class="annotation"><div class="ann-num">2</div><div class="ann-text"><strong>Progress bar (CSS):</strong> Width set as (current_points / next_tier_threshold) × 100%. Gradient fill from accent blue to lighter blue provides visual momentum.</div></div>
+    <div class="annotation"><div class="ann-num">3</div><div class="ann-text"><strong>Customer view — read-only:</strong> Customer sees reward table with n
